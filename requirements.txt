@@ -1,0 +1,15 @@
+numpy
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==2.0.1+cpu
+sentencepiece
+transformers
+sentence-transformers
+beautifulsoup4
+lxml
+python-dotenv
+urllib3==1.26.6
+nltk
+spacy==2.3.5
+Werkzeug==2.2.2
+Flask==2.0.1
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz

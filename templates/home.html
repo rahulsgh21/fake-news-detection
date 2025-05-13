@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+    <link rel="stylesheet" href="../static/styles.css">
+
+</head>
+<body>
+    <div>
+        <div >
+            <nav>
+                <a href="/">Home</a>
+                <a href="https://github.com/AriBora/Fake-News-Detection/blob/main">Source Code</a>
+            </nav>
+        </div>
+        <h1>Fake News Detection</h1> 
+        <form method="POST" action="{{ url_for('check_news') }}">
+            <div class="container">
+                <label for="searchInput"></label>
+                <input type="text" id="searchInput" name="searchInput" size="60" placeholder="Enter headline...">
+                <br/>
+                <button type="submit" id="SubmitButton" style="background-color: blue; color: white; padding: 10px 20px; margin-top: 10px;">Search</button>
+            </div>
+        </form>
+
+    </div>
+
+    {% if results %}
+    <div class="answer">
+    <h3>Search results for: {{News}}</h3>
+    <table id="results-table" class="results-table">
+        <tr>
+            <th>Sl. No.</th>
+            <th>URL</th>
+            <th>Related text</th>
+            <th>Inference</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+            <td>
+                {% if result[2] %}
+                    <ul>
+                        {% for item in result[2] %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>{{ result[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    {% endif %}
+
+</body>
+</html>
